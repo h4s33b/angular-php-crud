@@ -4,7 +4,7 @@ angular.module("myApp")
 		$scope.formSubmit = function(formData){
 			console.log(formData);
 			$http({method:'POST',url : 'setData.php',data : formData}).then(function(data){
-				console.log(data);
+				console.log(data.data.response);
 			});
 		}
 	}]);
