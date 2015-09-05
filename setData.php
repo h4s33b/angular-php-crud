@@ -5,7 +5,6 @@
 
 	$postdata = file_get_contents("php://input");
 	$request = json_decode($postdata);
-	echo $request->name;
 	$name = $request->name;
 	$email = $request->email;
 	$amount = $request->amount;
@@ -13,11 +12,11 @@
 
 	/*$arr = [];*/
 
-	$query = mysql_query("Insert into donation_form(name,email,amount,phone) VALUES ()");
-	while($row = mysql_fetch_assoc($query)){ 
-		array_push($arr,$row);
+	$query = mysql_query("Insert into donation_form(name,email,amount,phone) VALUES ('".$name."','".$email."',".$amount.",".$phone.")");
+	if($query){
+		echo json_encode(["response"=>"done"]);
+	}else{
+		echo json_encode(["response"=>"Error Occurred"]);
 	}
-	
-	echo json_encode($arr);
 
 ?>
