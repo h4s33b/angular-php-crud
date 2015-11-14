@@ -1,4 +1,5 @@
-<div ng-repeat="dat in data">
+<input type="text" ng-model="tobeSearch">
+<div ng-repeat="dat in data | filter:tobeSearch">
 	{{dat}}
 <div ui-sref="getSingleRecord({rid:dat.id})">{{dat.id}}</div>
 </div>
